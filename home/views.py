@@ -4,7 +4,12 @@ from django.shortcuts import render, HttpResponse
 
 # Creating index function
 def index(request):
-    return HttpResponse('This is homepage')
+    # return HttpResponse('This is homepage')
+    context = {
+        'variable': 'This is value',
+        'book': 'The Intelligent Investor'
+    }
+    return render(request, 'index.html', context)
 
 # Creating index function
 def about(request):
