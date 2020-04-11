@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from datetime import datetime
+from home.models import Contact
 
 # Create your views here.
 
@@ -13,12 +15,22 @@ def index(request):
 
 # Creating index function
 def about(request):
-    return HttpResponse('This is about page')
+    return render(request, 'about.html')
 
 # Creating index function
 def contact(request):
-    return HttpResponse('This is contact page')
+    if request.method == 'POST':
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        email = request.POST.get('email')
+        needs = request.POST.get('needs')
+        message = request.POST.get('message')
+
+        contact = Contact(firstname=firstname, lastname=lastname, email=email, needs=needs, message=message, date=datetime.today())
+        contact.save()
+        
+    return render(request, 'contact.html')
 
 # Creating index function
 def services(request):
-    return HttpResponse('This is services page')    
+    return render(request, 'services.html')
