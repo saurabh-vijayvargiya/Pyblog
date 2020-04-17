@@ -1,17 +1,15 @@
 from django.shortcuts import render, HttpResponse
 from datetime import datetime
 from home.models import Contact
+from home.models import Article
 
 # Create your views here.
 
 # Creating index function
 def index(request):
     # return HttpResponse('This is homepage')
-    context = {
-        'variable': 'This is value',
-        'book': 'The Intelligent Investor'
-    }
-    return render(request, 'index.html', context)
+    articles = Article.objects.all()
+    return render(request, 'blog-list.html', {'articles': articles})
 
 # Creating index function
 def about(request):
@@ -34,3 +32,8 @@ def contact(request):
 # Creating index function
 def services(request):
     return render(request, 'services.html')
+
+# Create blog view function
+def blogView(request, id):
+    article = Article.objects.get(id=id)
+    return render(request, 'blog-view.html', {'article': article})
