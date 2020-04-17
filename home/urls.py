@@ -7,5 +7,5 @@ urlpatterns = [
     path('about', views.about, name="about"),
     path('services', views.services, name="services"),
     path('contact', views.contact, name="contact"),
-    path('<int:id>', views.blogView, name="blogView"),
+    path('blog/<int:id>', views.blogView, name="blogView"),
 ]

@@ -18,10 +18,16 @@ class Author(models.Model):
     email = models.EmailField()
     bio = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 # Create category model
 class Category(models.Model):
     category = models.CharField(max_length=100)
     description = models.TextField()
+
+    def __str__(self):
+        return self.category
 
 # Create Article model
 class Article(models.Model):
@@ -30,3 +36,6 @@ class Article(models.Model):
     content = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block body %}
+<h1>{{ article.title }}</h1>
+<img src="{{ article.image.url }}" alt="{{ article.title }}">
+<p>{{ article.content }}</p>
+<h5>Tags: {{ article.category }}</h5>
+<h5>Posted By: <em>{{ article.author }}</em></h5>
+{% endblock body %}

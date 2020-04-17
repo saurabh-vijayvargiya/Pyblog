@@ -9,7 +9,7 @@ from home.models import Article
 def index(request):
     # return HttpResponse('This is homepage')
     articles = Article.objects.all()
-    return render(request, 'blog-list.html', {'articles': articles})
+    return render(request, 'index.html', {'articles': articles})
 
 # Creating index function
 def about(request):
